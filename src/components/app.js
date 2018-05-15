@@ -12,7 +12,7 @@ const App = () => (
            
             <Route exact path = "/" component = {List}/>
             <Route path = "/add-item" component ={AddItem}/>
-            <Route path = "/item/:id" compnent = {SingleItem}/>
+            <Route path = "/item/:id" component = {SingleItem}/>
         </div>
     </div>
 );
