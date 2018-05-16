@@ -10,11 +10,10 @@ class AddItem extends Component {
 
             await this.props.addToDoItem(values);
 
-            console.log('Add Item Props: ', this.props);
+            this.props.history.push('/');
         }
 
     renderInput({label, input, meta: {touched, error}}) {
-
 
         return (
             <div>
