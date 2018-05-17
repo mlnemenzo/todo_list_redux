@@ -24,9 +24,15 @@ class SingleItem extends Component {
         await this.props.toggleItem(this.props.match.params.id);
     }
     
+    timeCreated(created) {
+                const time = new Time(this.props.id.created);
+
+    }
+
     render() {
         console.log("Single Props: ", this.props);
         const { title, details, completed, complete, created } = this.props.item;
+
 
         return (
             <div>
