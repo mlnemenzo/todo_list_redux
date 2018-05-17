@@ -31,7 +31,21 @@ export function getSingleItem(id) {
 }
 
 // To toggle complete of an item:
-//axios.put(`${BASE_URL}/todos/${id + API_KEY}`);
+export function toggleItem(id) {
+    const response = axios.put(`${BASE_URL}/todos/${id + API_KEY}`);
 
-// To toggle complete of an item:
-//axios.delete(`${BASE_URL}/todos/${id + API_KEY}`);
+    return {
+        type: types.TOGGLE_ITEM,
+        payload: response 
+    }
+}
+
+// To delete an item:
+export function deleteSingleItem(id) {
+    const response = axios.delete(`${BASE_URL}/todos/${id + API_KEY}`);
+
+    return {
+        type: types.DELETE_SINGLE_ITEM,
+        payload: response
+    }
+}
