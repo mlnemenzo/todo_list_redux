@@ -24,11 +24,6 @@ class SingleItem extends Component {
         await this.props.toggleItem(this.props.match.params.id);
     }
     
-    timeCreated(created) {
-                const time = new Time(this.props.id.created);
-
-    }
-
     render() {
         console.log("Single Props: ", this.props);
         const { title, details, completed, complete, created } = this.props.item;
@@ -45,10 +40,13 @@ class SingleItem extends Component {
                     <h4>{title}</h4>
                     <p>{details}</p>
                     <button onClick = {this.deleteSingleItem.bind(this)}>Delete Item</button>
-                    <button onClick = {this.handleToggleItem.bind(this)}>Complete Item</button>
+                    <button onClick = {this.handleToggleItem.bind(this)}
+                        className = {`btn ${complete ? 'yellow' : 'green'}`}>{ complete ? 'Scott doesnt make sense' : 'He really doesnt make sense' }</button>
+                    <p className="center">Item is {complete ? "completed" : "incomplete"}</p>
                     <p>{completed}</p>
                     <p>{`Add Completed: ${complete}`}</p>
                     <p>{created}</p>
+                
                 </div>
             </div>
         )
