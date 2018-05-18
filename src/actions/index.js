@@ -4,7 +4,7 @@ const BASE_URL = "http://api.reactprototypes.com";
 const API_KEY = "?key=deadmau5er"; //deadmau5er
 
 export function getListData() {
-    const response = axios.get(`${BASE_URL}/todos${API_KEY}`);
+    const response = axios.get(`${BASE_URL}/todos${API_KEY}`);  // url, - id {url, id}
 
     return {
         type: types.GET_LIST_DATA,
@@ -49,3 +49,4 @@ export function deleteSingleItem(id) {
         payload: response
     }
 }
+
