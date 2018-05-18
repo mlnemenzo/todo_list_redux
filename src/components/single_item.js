@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';  
 import { connect } from 'react-redux';
-import { getSingleItem, deleteSingleItem, toggleItem } from '../actions'; 
+import * as actions from '../actions'; 
 
 class SingleItem extends Component {
 
@@ -10,6 +10,10 @@ class SingleItem extends Component {
 
         this.props.getSingleItem(this.props.match.params.id);
 
+    }
+
+    componentWillUnmount() {
+        this.props.clearSingleItem();
     }
 
     async deleteSingleItem() {
@@ -28,6 +32,10 @@ class SingleItem extends Component {
         console.log("Single Props: ", this.props);
         const { title, details, completed, complete, created } = this.props.item;
 
+        if(!title) {
+            return <h1 className = "center">loading...</h1>
+        }
+
 
         return (
             <div>
@@ -39,7 +47,7 @@ class SingleItem extends Component {
                 <div className = "row center">  
                     <h4>{title}</h4>
                     <p>{details}</p>
-                    <button onClick = {this.deleteSingleItem.bind(this)}>Delete Item</button>
+                    <button onClick = {this.deleteSingleItem.bind(this)} className = "btn red darken-2">Delete Item</button>
                     <button onClick = {this.handleToggleItem.bind(this)}
                         className = {`btn ${complete ? 'yellow' : 'green'}`}>{ complete ? 'Scott doesnt make sense' : 'He really doesnt make sense' }</button>
                     <p className="center">Item is {complete ? "completed" : "incomplete"}</p>
@@ -64,4 +72,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {getSingleItem, deleteSingleItem, toggleItem})(SingleItem);
+export default connect(mapStateToProps, actions)(SingleItem);
