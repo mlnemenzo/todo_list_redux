@@ -50,3 +50,8 @@ export function deleteSingleItem(id) {
     }
 }
 
+export function clearSingleItem() {
+    return {
+        type: types.CLEAR_SINGLE_ITEM
+    }
+}
